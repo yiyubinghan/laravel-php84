@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/phpinfo', function () {
     return phpinfo();
 });
+
+Route::get('/time', function () {
+    return date('Y-m-d H:i:s', time());
+});
