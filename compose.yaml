@@ -1,11 +1,11 @@
 services:
-    server-test:
+    server-dev:
         build:
             context: './vendor/laravel/sail/runtimes/8.4'
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: 'laravel-php84-server-test'
+        image: 'laravel-php84-server-dev'
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
