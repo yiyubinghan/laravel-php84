@@ -1,0 +1,15 @@
+.git
+.gitignore
+vendor
+compose.yaml
+compose.*.yml
+*.md
+.env
+tests
+
+# node_modules
+# *.log
+# coverage
+# .phpunit.result.cache
+
+.DS_Store
