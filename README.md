@@ -2,6 +2,7 @@
 ```
 Composer version 2.9.2
 PHP version 8.4.15
+Laravel Version 12.42.0
 ```
 
 # 开发环境（dev）：
