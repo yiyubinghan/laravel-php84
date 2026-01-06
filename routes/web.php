@@ -13,3 +13,7 @@ Route::get('/phpinfo', function () {
 Route::get('/time', function () {
     return date('Y-m-d H:i:s', time());
 });
+
+Route::get('/opcache', function () {
+    return opcache_get_status();
+});

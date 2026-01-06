@@ -4,6 +4,9 @@ FROM php:8.4.15-fpm-alpine
 # 设置工作目录
 WORKDIR /app
 
+# 复制 OPcache配置文件
+COPY docker/test/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
 # 复制 php-fpm配置文件
 COPY docker/test/php-fpm/php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY docker/test/php-fpm/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
