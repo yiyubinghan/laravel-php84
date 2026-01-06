@@ -30,13 +30,7 @@ RUN composer install
 # 设置文件权限
 RUN chown -R www-data:www-data /app && chmod -R 755 /app/storage && chmod -R 755 /app/bootstrap/cache
 
-# 复制 .env
-RUN cp .env.example .env
-
-# 生成 laravel key
-RUN php artisan key:generate
-
-# 执行数据库迁移（生产环境建议手动执行）
+# 运行脚本
 COPY docker/test/shell/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]

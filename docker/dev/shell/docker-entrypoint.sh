@@ -1,7 +1,26 @@
 #!/bin/sh
 
-# 运行数据库迁移
+# 复制 .env 并修改特定配置
+if [ ! -f .env ]; then
+    cp .env.example .env
+
+    sed -i 's/APP_ENV=.*/APP_ENV='${APP_ENV}'/' .env && \
+    sed -i 's/APP_DEBUG=.*/APP_DEBUG='${APP_DEBUG}'/' .env && \
+    sed -i 's/DB_CONNECTION=.*/DB_CONNECTION='${DB_CONNECTION}'/' .env && \
+    sed -i 's/DB_HOST=.*/DB_HOST='${DB_HOST}'/' .env && \
+    sed -i 's/DB_PORT=.*/DB_PORT='${DB_PORT}'/' .env && \
+    sed -i 's/DB_DATABASE=.*/DB_DATABASE='${DB_DATABASE}'/' .env && \
+    sed -i 's/DB_USERNAME=.*/DB_USERNAME='${DB_USERNAME}'/' .env && \
+    sed -i 's/DB_PASSWORD=.*/DB_PASSWORD='${DB_PASSWORD}'/' .env
+fi
+
+# 生成应用密钥
+php artisan key:generate
+
+# 执行数据库迁移（生产环境建议手动执行）
 php artisan migrate
 
-# 迁移完成，启动应用
+# 配置缓存
+php artisan config:cache
+
 exec "$@"
