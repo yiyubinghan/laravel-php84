@@ -7,9 +7,6 @@ compose.*.yml
 .env
 tests
 
-# node_modules
-# *.log
-# coverage
-# .phpunit.result.cache
-
 .DS_Store
+bootstrap/cache/*
+storage/logs/*
