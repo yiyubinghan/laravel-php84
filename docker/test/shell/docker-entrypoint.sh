@@ -4,6 +4,7 @@
 if [ ! -f .env ]; then
     cp .env.example .env
 
+    sed -i 's/APP_NAME=.*/APP_NAME='${APP_NAME}'/' .env && \
     sed -i 's/APP_ENV=.*/APP_ENV='${APP_ENV}'/' .env && \
     sed -i 's/APP_DEBUG=.*/APP_DEBUG='${APP_DEBUG}'/' .env && \
     sed -i 's/DB_CONNECTION=.*/DB_CONNECTION='${DB_CONNECTION}'/' .env && \
@@ -22,5 +23,9 @@ php artisan migrate
 
 # 配置缓存
 php artisan config:cache
+
+# 设置存储目录权限
+chown -R www-data:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
 
 exec "$@"
