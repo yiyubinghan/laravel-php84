@@ -7,5 +7,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::get('test1', [App\Http\Controllers\TestController::class, 'test1']);
-Route::get('test2', [App\Http\Controllers\TestController::class, 'test2']);
+Route::get('test-concurrency-1', [App\Http\Controllers\TestController::class, 'testConcurrency1']);
+Route::get('test-concurrency-2', [App\Http\Controllers\TestController::class, 'testConcurrency2']);
+Route::get('test-redis', [App\Http\Controllers\TestController::class, 'testRedis']);

@@ -12,7 +12,10 @@ if [ ! -f .env ]; then
     sed -i 's/DB_PORT=.*/DB_PORT='${DB_PORT}'/' .env && \
     sed -i 's/DB_DATABASE=.*/DB_DATABASE='${DB_DATABASE}'/' .env && \
     sed -i 's/DB_USERNAME=.*/DB_USERNAME='${DB_USERNAME}'/' .env && \
-    sed -i 's/DB_PASSWORD=.*/DB_PASSWORD='${DB_PASSWORD}'/' .env
+    sed -i 's/DB_PASSWORD=.*/DB_PASSWORD='${DB_PASSWORD}'/' .env && \
+    sed -i 's/REDIS_CLIENT=.*/REDIS_CLIENT='${REDIS_CLIENT}'/' .env && \
+    sed -i 's/REDIS_HOST=.*/REDIS_HOST='${REDIS_HOST}'/' .env && \
+    sed -i 's/REDIS_PORT=.*/REDIS_PORT='${REDIS_PORT}'/' .env
 fi
 
 # 生成应用密钥
