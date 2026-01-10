@@ -12,11 +12,16 @@ COPY docker/dev/php-fpm/php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY docker/dev/php-fpm/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 
 # 安装系统依赖 supervisor
-RUN apk add --no-cache nginx linux-headers $PHPIZE_DEPS
+RUN apk add --no-cache nginx supervisor linux-headers $PHPIZE_DEPS
 
 # 复制 nginx配置文件
 COPY docker/dev/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY docker/dev/nginx/http.d /etc/nginx/http.d
+
+# 安装和配置 Supervisor
+RUN mkdir -p /var/log/supervisor
+COPY docker/test/supervisord/supervisord.conf /etc/supervisord.conf
+COPY docker/test/supervisord/supervisor.d /etc/supervisor.d
 
 # 安装 PHP 扩展 bcmath swoole
 RUN docker-php-ext-install pdo_mysql sockets
@@ -41,5 +46,5 @@ COPY docker/dev/shell/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-# 启动nginx应用
-CMD ["sh", "-c", "php-fpm -D && nginx -g 'daemon off;'"]
+# 启动命令
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
