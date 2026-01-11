@@ -27,6 +27,15 @@ php artisan migrate
 # 配置缓存
 php artisan config:cache
 
+# Blade模版缓存
+# php artisan view:cache
+
+# 事件和监听器缓存
+# php artisan event:cache
+
+# 路由缓存
+# php artisan route:cache
+
 # 设置存储目录权限
 chown -R www-data:www-data storage bootstrap/cache
 chmod -R 775 storage bootstrap/cache
