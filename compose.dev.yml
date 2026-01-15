@@ -6,7 +6,8 @@ services:
         image: laravel-php84-server-dev
         container_name: laravel-php84-server-dev
         ports:
-            - "8080:80"
+            - "9000:80"
+            - "8000:81"
         environment:
             - APP_NAME=Laravel(dev)
             - APP_ENV=dev

@@ -6,7 +6,8 @@ services:
         image: laravel-php84-server-test
         container_name: laravel-php84-server-test
         ports:
-            - "8080:80"
+            - "9000:80"
+            - "8000:81"
         environment:
             - APP_NAME=Laravel(test)
             - APP_ENV=test
