@@ -20,8 +20,8 @@ COPY docker/dev/nginx/http.d /etc/nginx/http.d
 
 # 安装和配置 Supervisor
 RUN mkdir -p /var/log/supervisor
-COPY docker/test/supervisord/supervisord.conf /etc/supervisord.conf
-COPY docker/test/supervisord/supervisor.d /etc/supervisor.d
+COPY docker/dev/supervisord/supervisord.conf /etc/supervisord.conf
+COPY docker/dev/supervisord/supervisor.d /etc/supervisor.d
 
 # 安装 PHP 扩展 bcmath swoole
 RUN docker-php-ext-install pdo_mysql sockets pcntl
