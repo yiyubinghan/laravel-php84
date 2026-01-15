@@ -11,7 +11,7 @@ COPY docker/dev/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY docker/dev/php-fpm/php-fpm.conf /usr/local/etc/php-fpm.conf
 COPY docker/dev/php-fpm/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 
-# 安装系统依赖 supervisor
+# 安装系统依赖
 RUN apk add --no-cache nginx supervisor linux-headers $PHPIZE_DEPS brotli-dev brotli-static
 
 # 复制 nginx配置文件
